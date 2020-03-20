@@ -1,9 +1,9 @@
 const path = require("path");
-const APP_DIR = path.resolve(__dirname, "sec");
+// const APP_DIR = path.resolve(__dirname, "src");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 
 const config = {
-  entry: APP_DIR + "App.js",
+  entry: "./index.js",
   devServer: {
     contentBase: OUTPUT_DIR,
     port: 9000,
