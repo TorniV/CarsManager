@@ -33,8 +33,8 @@ export class NavMenu extends Component {
     return (
       <header>
         <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
-          light
+          className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nav-menu"
+          dark
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
@@ -48,32 +48,32 @@ export class NavMenu extends Component {
             >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">
+                  <NavLink tag={Link} to="/">
                     Home
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">
+                  <NavLink tag={Link} to="/counter">
                     --Counter
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">
+                  <NavLink tag={Link} to="/fetch-data">
                     --Fetch data
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/car/{id}">
-                    Car
+                  <NavLink tag={Link} to="/cars">
+                    Cars
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/costs">
+                  <NavLink tag={Link} to="/costs">
                     Costs
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/contact">
+                  <NavLink tag={Link} to="/contact">
                     Contact
                   </NavLink>
                 </NavItem>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export class Car extends Component {
+export class Cars extends Component {
   render() {
     return (
       <div>
-        <h1>Car</h1>
+        <h1>Cars</h1>
       </div>
     );
   }
