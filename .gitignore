@@ -2,3 +2,7 @@ node_modules
 bin
 package-lock.json
 obj/debug
+
+.vs/CarsManager/v16/.suo
+
+.vs/CarsManager/DesignTimeBuild/.dtbcache.v2

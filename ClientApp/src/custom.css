@@ -8,18 +8,33 @@ code {
 }
 
 .btn-primary {
-  color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
 .nav-menu {
   background-color: #242526;
-  color: white;
 }
 
 .app-style {
   background-color: #18191a;
-  color: white;
   height: 100%;
+}
+
+.cars-page {
+  display: flex;
+}
+
+.cars-page .side-nav {
+  height: 100%;
+  width: 300px;
+  position: absolute;
+  left: 0px;
+  padding-left: 20px;
+  background-color: #242526;
+}
+
+body {
+  background-color: #18191a;
+  color: white;
 }
