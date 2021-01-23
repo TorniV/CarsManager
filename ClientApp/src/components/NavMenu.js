@@ -52,24 +52,11 @@ export class NavMenu extends Component {
                     Home
                   </NavLink>
                 </NavItem>
-                {/* <NavItem>
-                  <NavLink tag={Link} to="/counter">
-                    --Counter
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} to="/fetch-data">
-                    --Fetch data
-                  </NavLink>
-                </NavItem> */}
                 <NavItem>
                   <NavLink tag={Link} to="/cars">
                     Cars
                   </NavLink>
                 </NavItem>
-                {/* <li>
-                  <Link to="/cars">Cars</Link>
-                </li> */}
                 <NavItem>
                   <NavLink tag={Link} to="/costs">
                     Costs

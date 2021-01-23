@@ -6,3 +6,5 @@ obj/debug
 .vs/CarsManager/v16/.suo
 
 .vs/CarsManager/DesignTimeBuild/.dtbcache.v2
+
+obj/
