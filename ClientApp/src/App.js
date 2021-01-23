@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { Route } from "react-router";
 import { Layout } from "./components/Layout";
 import { Home } from "./components/Home";
 import { FetchData } from "./components/FetchData";
 import { Counter } from "./components/Counter";
-import { Cars } from "./components/Cars/Cars";
+import { CarsWithRouter } from "./components/Cars/Cars";
 import { Costs } from "./components/Costs/Costs";
 import { Contact } from "./components/Contact/Contact";
 
@@ -20,7 +19,7 @@ export default class App extends Component {
         <Layout>
           <Switch>
             <Route path="/cars">
-              <Cars />
+              <CarsWithRouter />
             </Route>
             <Route path="/costs">
               <Costs />

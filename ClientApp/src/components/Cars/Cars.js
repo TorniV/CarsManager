@@ -1,33 +1,48 @@
-import React from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import React, { Component } from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { SideNavWithRouter } from "./SideNav/SideNav";
 import { DashBoard } from "./Pages/Dashboard";
 import { Fuel } from "./Pages/Fuel";
 import { Services } from "./Pages/Services";
 import { Insurance } from "./Pages/Insurance";
 
-export function Cars() {
-  let { path } = useRouteMatch();
-  let selectedCar = 1;
+class Cars extends Component {
+  constructor() {
+    super();
+    this.state = { selectedCar: 1 };
+  }
 
-  return (
-    <div className="cars-page">
-      <SideNavWithRouter id={selectedCar} />
-      <h2>H2: {selectedCar} </h2>
-      <Switch>
-        <Route path={`${path}/:selectedCar/fuel`}>
-          <Fuel id={selectedCar} />
-        </Route>
-        <Route path={`${path}/:selectedCar/services`}>
-          <Services />
-        </Route>
-        <Route path={`${path}/:selectedCar/insurance`}>
-          <Insurance />
-        </Route>
-        <Route exact path={`${path}/:selectedCar`}>
-          <DashBoard />
-        </Route>
-      </Switch>
-    </div>
-  );
+  render() {
+    let url = this.props.match.url;
+    function handleCarChange(newSelectedCar) {
+      this.setState({
+        selectedCar: newSelectedCar,
+      });
+    }
+
+    return (
+      <div className="cars-page">
+        <SideNavWithRouter
+          id={this.state.selectedCar}
+          onCarChange={handleCarChange.bind(this)}
+        />
+        <Switch>
+          <Route path={`${url}/:selectedCar/fuel`}>
+            <Fuel id={this.state.selectedCar} />
+          </Route>
+          <Route path={`${url}/:selectedCar/services`}>
+            <Services />
+          </Route>
+          <Route path={`${url}/:selectedCar/insurance`}>
+            <Insurance />
+          </Route>
+          <Route exact path={`${url}/:selectedCar`}>
+            <DashBoard />
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
 }
+
+export const CarsWithRouter = withRouter(Cars);

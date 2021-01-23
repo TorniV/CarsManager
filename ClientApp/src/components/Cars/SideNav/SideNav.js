@@ -13,6 +13,7 @@ class SideNav extends Component {
       this.setState({
         selectedCar: event.target.value,
       });
+      this.props.onCarChange(event.target.value);
     }
     return (
       <div className="side-nav">
@@ -24,7 +25,6 @@ class SideNav extends Component {
           <option value="2">Mondeo</option>
           <option value="3">Seicento</option>
         </select>
-        <p>Selected: {this.state.selectedCar}</p>
         <nav>
           <ul>
             <li>
