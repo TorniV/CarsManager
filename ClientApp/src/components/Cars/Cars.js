@@ -12,19 +12,20 @@ class Cars extends Component {
     this.state = { selectedCar: 1 };
   }
 
+  handleCarChange = (newSelectedCar) => {
+    this.setState({
+      selectedCar: newSelectedCar,
+    });
+  };
+
   render() {
     let url = this.props.match.url;
-    function handleCarChange(newSelectedCar) {
-      this.setState({
-        selectedCar: newSelectedCar,
-      });
-    }
 
     return (
       <div className="cars-page">
         <SideNavWithRouter
           id={this.state.selectedCar}
-          onCarChange={handleCarChange.bind(this)}
+          onCarChange={this.handleCarChange}
         />
         <Switch>
           <Route path={`${url}/:selectedCar/fuel`}>

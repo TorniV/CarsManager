@@ -7,20 +7,19 @@ class SideNav extends Component {
     this.state = { selectedCar: props.id };
   }
 
+  handleChange = (event) => {
+    this.setState({
+      selectedCar: event.target.value,
+    });
+    this.props.onCarChange(event.target.value);
+  };
+
   render() {
     let url = this.props.match.url;
-    function handleChange(event) {
-      this.setState({
-        selectedCar: event.target.value,
-      });
-      this.props.onCarChange(event.target.value);
-    }
+
     return (
       <div className="side-nav">
-        <select
-          value={this.state.selectedCar}
-          onChange={handleChange.bind(this)}
-        >
+        <select value={this.state.selectedCar} onChange={this.handleChange}>
           <option value="1">Focus</option>
           <option value="2">Mondeo</option>
           <option value="3">Seicento</option>
