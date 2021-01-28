@@ -5,12 +5,21 @@ import { DashBoard } from "./Pages/Dashboard";
 import { Fuel } from "./Pages/Fuel";
 import { Services } from "./Pages/Services";
 import { Insurance } from "./Pages/Insurance";
+import { CarsService } from "../../services/CarsService";
 
 class Cars extends Component {
   constructor() {
     super();
     this.state = { selectedCar: 1 };
   }
+
+  componentDidMount() {
+    CarsService.GetCars(this.onCarsReceived);
+  }
+
+  onCarsReceived = (cars) => {
+    console.log("API: ", cars);
+  };
 
   handleCarChange = (newSelectedCar) => {
     this.setState({
