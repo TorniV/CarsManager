@@ -10,7 +10,7 @@ import { CarsService } from "../../services/CarsService";
 class Cars extends Component {
   constructor() {
     super();
-    this.state = { selectedCar: 1 };
+    this.state = { selectedCar: {}, carsList: [] };
   }
 
   componentDidMount() {
@@ -18,27 +18,38 @@ class Cars extends Component {
   }
 
   onCarsReceived = (cars) => {
-    console.log("API: ", cars);
+    this.setState({
+      carsList: cars,
+    });
+    this.setSelectedCar(cars[0]);
   };
 
   handleCarChange = (newSelectedCar) => {
+    this.setSelectedCar(newSelectedCar);
+  };
+
+  setSelectedCar(newSelectedCar) {
     this.setState({
       selectedCar: newSelectedCar,
     });
-  };
+  }
 
   render() {
     let url = this.props.match.url;
 
     return (
       <div className="cars-page">
-        <SideNavWithRouter
-          id={this.state.selectedCar}
-          onCarChange={this.handleCarChange}
-        />
+        {this.state.carsList.length ? (
+          <SideNavWithRouter
+            carsList={this.state.carsList}
+            onCarChange={this.handleCarChange}
+          />
+        ) : (
+          "Ładowanie…"
+        )}
         <Switch>
           <Route path={`${url}/:selectedCar/fuel`}>
-            <Fuel id={this.state.selectedCar} />
+            <Fuel id={this.state.selectedCar.id} />
           </Route>
           <Route path={`${url}/:selectedCar/services`}>
             <Services />
@@ -47,7 +58,7 @@ class Cars extends Component {
             <Insurance />
           </Route>
           <Route exact path={`${url}/:selectedCar`}>
-            <DashBoard />
+            <DashBoard car={this.state.selectedCar} />
           </Route>
         </Switch>
       </div>
