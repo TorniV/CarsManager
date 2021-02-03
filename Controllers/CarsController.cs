@@ -1,8 +1,8 @@
-﻿using CarsManager.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
+using CarsManager.Database;
+using CarsManager.Database.Cars.DbSets;
 
 namespace CarsManager.Controllers
 {
@@ -18,32 +18,10 @@ namespace CarsManager.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Car> Get()
+        public IEnumerable<CarData> Get()
         {
-            return new List<Car>
-            {
-                new Car
-                {
-                    Id = Guid.NewGuid(),
-                    Make = "Ford",
-                    Model = "Mondeo",
-                    Year = 2007
-                },
-                new Car
-                {
-                    Id = Guid.NewGuid(),
-                    Make = "Ford",
-                    Model = "Focus",
-                    Year = 2007
-                },
-                new Car
-                {
-                    Id = Guid.NewGuid(),
-                    Make = "Fiat",
-                    Model = "Seicento",
-                    Year = 2003
-                },
-            };
+            var repository = new CarsRepository();
+            return repository.GetCars();
         }
     }
 }

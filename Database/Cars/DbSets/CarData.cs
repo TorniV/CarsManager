@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace CarsManager.Models
+namespace CarsManager.Database.Cars.DbSets
 {
-    public class Car
+    public class CarData
     {
-        public Guid CarId { get; set; }
+        public Guid Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public string Generation { get; set; }
@@ -12,6 +12,8 @@ namespace CarsManager.Models
         public int Mileage { get; set; }
         public string Vin { get; set; }
         public string RegistrationNumber { get; set; }
-        public DateTime FirstRegistration { get; set; }
+        public DateTime? FirstRegistration { get; set; }
+
+        // public List<ReFuel> Refuelings { get; } = new List<Refuel>();
     }
 }

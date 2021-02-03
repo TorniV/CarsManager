@@ -10,7 +10,11 @@ import { CarsService } from "../../services/CarsService";
 class Cars extends Component {
   constructor() {
     super();
-    this.state = { selectedCar: {}, carsList: [] };
+    this.state = {
+      selectedCar: {},
+      carsList: [],
+      isLoading: true,
+    };
   }
 
   componentDidMount() {
@@ -20,6 +24,7 @@ class Cars extends Component {
   onCarsReceived = (cars) => {
     this.setState({
       carsList: cars,
+      isLoading: false,
     });
     this.setSelectedCar(cars[0]);
   };
@@ -39,17 +44,19 @@ class Cars extends Component {
 
     return (
       <div className="cars-page">
-        {this.state.carsList.length ? (
+        {this.state.isLoading ? (
+          "Ładowanie…"
+        ) : (
           <SideNavWithRouter
             carsList={this.state.carsList}
             onCarChange={this.handleCarChange}
           />
-        ) : (
-          "Ładowanie…"
         )}
         <Switch>
           <Route path={`${url}/:selectedCar/fuel`}>
-            <Fuel id={this.state.selectedCar.id} />
+            <Fuel
+              id={this.state.selectedCar ? this.state.selectedCar.id : ""}
+            />
           </Route>
           <Route path={`${url}/:selectedCar/services`}>
             <Services />
