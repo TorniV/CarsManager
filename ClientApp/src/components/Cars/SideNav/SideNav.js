@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { CarsService } from "../../../services/CarsService";
 
-const SideNavMenu = ({ selectedCar, url }) => {
+const SideNavMenu = ({ selectedCar, url, carsList, handleChange }) => {
   if (selectedCar) {
     return (
       <div>
-        <select onChange={this.handleChange}>
-          {this.state.carsList.map((car, id) => (
+        <select onChange={handleChange}>
+          {carsList.map((car, id) => (
             <option key={id} value={car.id}>
               {car.model}
             </option>
@@ -46,6 +47,14 @@ class SideNav extends Component {
     };
   }
 
+  addCar = () => {
+    CarsService.AddCar(this.onCarAdded);
+  };
+
+  onCarAdded = (result) => {
+    console.log("Car added successfully");
+  };
+
   handleChange = (event) => {
     let selectedCar = this.state.carsList.find((car) => {
       return car.id === event.target.value;
@@ -61,7 +70,15 @@ class SideNav extends Component {
 
     return (
       <div className="side-nav">
-        <SideNavMenu selectedCar={this.state.selectedCar} ulr={url} />
+        <button className="btn btn-dark" onClick={this.addCar}>
+          Dodaj
+        </button>
+        <SideNavMenu
+          selectedCar={this.state.selectedCar}
+          url={url}
+          carsList={this.state.carsList}
+          handleChange={this.handleChange}
+        />
       </div>
     );
   }
