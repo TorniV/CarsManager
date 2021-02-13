@@ -6,7 +6,11 @@ const SideNavMenu = ({ selectedCar, url, carsList, handleChange }) => {
   if (selectedCar) {
     return (
       <div>
-        <select onChange={handleChange}>
+        <select
+          className="form-select"
+          onChange={handleChange}
+          style={{ marginBottom: "5px" }}
+        >
           {carsList.map((car, id) => (
             <option key={id} value={car.id}>
               {car.model}
@@ -14,18 +18,33 @@ const SideNavMenu = ({ selectedCar, url, carsList, handleChange }) => {
           ))}
         </select>
         <nav>
-          <ul>
-            <li>
-              <Link to={`${url}/${selectedCar.id}`}>Home</Link>
+          <ul className="list-group">
+            <li className="list-group-item list-group-item-action list-group-item-dark">
+              <Link to={`${url}/${selectedCar.id}`} style={{ color: "black" }}>
+                Home
+              </Link>
             </li>
-            <li>
-              <Link to={`${url}/${selectedCar.id}/fuel`}>Tankowanie</Link>
+            <li className="list-group-item list-group-item-action list-group-item-dark">
+              <Link
+                to={`${url}/${selectedCar.id}/fuel`}
+                style={{ color: "black" }}
+              >
+                Tankowanie
+              </Link>
             </li>
-            <li>
-              <Link to={`${url}/${selectedCar.id}/services`}>Serwisowanie</Link>
+            <li className="list-group-item list-group-item-action list-group-item-dark">
+              <Link
+                to={`${url}/${selectedCar.id}/services`}
+                style={{ color: "black" }}
+              >
+                Serwisowanie
+              </Link>
             </li>
-            <li>
-              <Link to={`${url}/${selectedCar.id}/insurance`}>
+            <li className="list-group-item list-group-item-action list-group-item-dark">
+              <Link
+                to={`${url}/${selectedCar.id}/insurance`}
+                style={{ color: "black" }}
+              >
                 Ubezpieczenie i przeglądy
               </Link>
             </li>
@@ -70,7 +89,11 @@ class SideNav extends Component {
 
     return (
       <div className="side-nav">
-        <button className="btn btn-dark" onClick={this.addCar}>
+        <button
+          className="btn btn-dark"
+          style={{ marginBottom: "5px" }}
+          onClick={this.addCar}
+        >
           Dodaj
         </button>
         <SideNavMenu

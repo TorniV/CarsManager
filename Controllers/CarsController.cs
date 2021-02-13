@@ -9,7 +9,7 @@ using CarsManager.Database.Cars.DbSets;
 namespace CarsManager.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CarsController : ControllerBase
     {
         private readonly ILogger<CarsController> _logger;

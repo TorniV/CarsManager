@@ -1,6 +1,6 @@
 export const CarsService = {
   GetCars: function (onDataReceived) {
-    fetch("https://localhost:44381/Cars")
+    fetch("https://localhost:44381/api/Cars")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -13,7 +13,7 @@ export const CarsService = {
   },
 
   AddCar: function (onCarAdded) {
-    fetch("https://localhost:44381/Cars", {
+    fetch("https://localhost:44381/api/Cars", {
       method: "POST",
       headers: {
         Accept: "application/json",
