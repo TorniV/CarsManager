@@ -12,17 +12,14 @@ export const CarsService = {
       );
   },
 
-  AddCar: function (onCarAdded) {
+  AddCar: function (carToAdd, onCarAdded) {
     fetch("https://localhost:44381/api/Cars", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        firstParam: "yourValue",
-        secondParam: "yourOtherValue",
-      }),
+      body: JSON.stringify(carToAdd),
     })
       .then((response) => response.json())
       .then((json) => {

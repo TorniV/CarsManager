@@ -27,22 +27,11 @@ namespace CarsManager.Controllers
         }
 
         [HttpPost]
-        public async Task AddCar()
+        public async Task AddCar([FromBody] CarData carToAdd)
         {
+            carToAdd.Id = Guid.NewGuid();
             var repository = new CarsRepository();
-            var car = new CarData
-            {
-                Id = Guid.NewGuid(),
-                Make = "Ford",
-                Model = "Mondeo",
-                Year = 2007,
-                FirstRegistration = new DateTime(2007, 01, 01),
-                Generation = "Mk 4",
-                Mileage = 275000,
-                RegistrationNumber = "SCI 53366",
-                Vin = "Vin number"
-            };
-            await repository.AddCar(car);
+            await repository.AddCar(carToAdd);
         }
     }
 }

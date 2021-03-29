@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { CarsService } from "../../../services/CarsService";
+import { ModalContainer } from "../Modal/Form/ModalContainer";
 
 const SideNavMenu = ({ selectedCar, url, carsList, handleChange }) => {
   if (selectedCar) {
@@ -66,8 +67,8 @@ class SideNav extends Component {
     };
   }
 
-  addCar = () => {
-    CarsService.AddCar(this.onCarAdded);
+  addCar = (carToAdd) => {
+    CarsService.AddCar(carToAdd, this.onCarAdded);
   };
 
   onCarAdded = (result) => {
@@ -84,18 +85,27 @@ class SideNav extends Component {
     this.props.onCarChange(selectedCar);
   };
 
+  onFormSubmit = (event) => {
+    event.preventDefault(event);
+    var carToAdd = {
+      make: event.target.make.value,
+      model: event.target.model.value,
+      generation: event.target.generation.value,
+      year: parseInt(event.target.year.value),
+      mileage: parseInt(event.target.mileage.value),
+      registrationNumber: event.target.registrationNumber.value,
+      firstRegistration: Date.parse(event.target.firstRegistration.value),
+      vin: event.target.vin.value,
+    };
+    this.addCar(carToAdd);
+  };
+
   render() {
     let url = this.props.match.url;
 
     return (
       <div className="side-nav">
-        <button
-          className="btn btn-dark"
-          style={{ marginBottom: "5px" }}
-          onClick={this.addCar}
-        >
-          Dodaj
-        </button>
+        <ModalContainer onSubmit={this.onFormSubmit} />
         <SideNavMenu
           selectedCar={this.state.selectedCar}
           url={url}
